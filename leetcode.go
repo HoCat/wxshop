@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
  * 两数之和 暴力循环法
  * @nums 要查找的数组
@@ -58,9 +60,20 @@ func lastRemaining(n int, m int) int {
 /* 杨辉三角
  *
  */
-func triangles(n int){
-	number := 1
-	for i := 1; i < n; i++ {
-		println(i)
+func triangles(n int)  {
+	// number := 1
+	arr := make([][]int,0)
+	arr = append(arr, []int{1}) // 第一行是1
+	fmt.Println(arr)
+	fmt.Println([]int{1})
+	for i := 1; i < n; i++ {  // i 是 行
+		first := []int{1} // 行头部添加元素 1
+		for j := 1; j <= i - 1; j++ {  // j 是列
+			first = append(first, arr[i-1][j-1] + arr[i-1][j])
+		}
+		first = append(first, 1) // 给行末尾添加1
+		fmt.Println(first)
+		arr = append(arr, first)
 	}
+	fmt.Println(arr)
 }
